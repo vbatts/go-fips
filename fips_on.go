@@ -30,8 +30,8 @@ func ModeSet(mode ONOFF) (ONOFF, error) {
 func LastError() string {
 	buf := C.malloc(1024)
 	e := C.ERR_get_error() // a C.ulong
-  C.ERR_load_crypto_strings()
-  defer C.ERR_free_strings()
+	C.ERR_load_crypto_strings()
+	defer C.ERR_free_strings()
 	C.ERR_error_string_n(e, (*C.char)(buf), 1024)
 	defer C.free(buf)
 	return C.GoString((*C.char)(buf))
