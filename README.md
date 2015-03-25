@@ -1,14 +1,21 @@
-## go-fips
+# go-fips
 
-Proof-Of-Concept for using golang and building a FIPS enabled application.
+Collect FIPS mode information about your runtime.
+
+Whether the kernel was booted with FIPS mode parameters. And whether the
+openssl linked can properly enable FIPS mode.
 
 
-## Setup
+# Docs
+
+https://godoc.org/github.com/vbatts/go-fips
+
+# Setup
 
 See http://www.openssl.org/docs/fips/UserGuide-2.0.pdf
 to set up an environment where fips mode can be enabled
 
-## Building
+# Building
 
 ```
 go build .
@@ -20,7 +27,7 @@ and
 go build -tags fips .
 ```
 
-## Testing
+# Testing
 
 ```
 go test .
