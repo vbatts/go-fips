@@ -11,23 +11,19 @@ package fips
 import "C"
 import "errors"
 
-// Mode checks whether is FIPS mode is on
-func Mode() (ONOFF, error) {
+func mode() (ONOFF, error) {
 	return ONOFF(C.FIPS_mode()), nil
 }
 
-// Attempt to turn on FIPS for the context of this executable
-func ModeSet(mode ONOFF) (ONOFF, error) {
+func modeSet(mode ONOFF) (ONOFF, error) {
 	o := ONOFF(C.FIPS_mode_set(C.int(mode)))
 	if o != mode {
-		return o, errors.New(LastError())
+		return o, errors.New(lastError())
 	}
 	return o, nil
 }
 
-// returns error:[error code]:[library name]:[function name]:[reason string]
-// this error code can also be read with `openssl errstr <error code>`
-func LastError() string {
+func lastError() string {
 	buf := C.malloc(1024)
 	e := C.ERR_get_error() // a C.ulong
 	C.ERR_load_crypto_strings()
