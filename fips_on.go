@@ -11,7 +11,7 @@ package fips
 import "C"
 import "errors"
 
-// Check whether is FIPS mode is on
+// Mode checks whether is FIPS mode is on
 func Mode() (ONOFF, error) {
 	return ONOFF(C.FIPS_mode()), nil
 }
