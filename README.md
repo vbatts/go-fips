@@ -10,17 +10,25 @@ to set up an environment where fips mode can be enabled
 
 ## Building
 
-  go build .
+```
+go build .
+```
 
-or
+and
 
-  go build -tags fips .
+```
+go build -tags fips .
+```
 
 ## Testing
 
-  go test .
+```
+go test .
+```
 
-or
+and
 
-  go test -tags fips .
+```
+go test -tags fips .
+```
 
